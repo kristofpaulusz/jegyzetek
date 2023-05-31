@@ -45,6 +45,20 @@
         /* ide jöhet a kód */
         const token = $('meta[name="csrf-token"]').attr("content"); // getting the token
     });
+    // formData készítése
+const formElement = $(`.formSelector`);
+
+        formElement.on("submit", (event) => {
+            event.preventDefault();
+            //console.log(this.#cimtipus + " submitja megakadályozva");
+            const form = new FormData($(formElement).get(0));
+            window.dispatchEvent(
+                new CustomEvent("cimFormElkuldve", {
+                    detail: { form: form, tipus: cimtipus },
+                })
+            );
+// utvonal készítése
+"?" + new URLSearchParams(form)
 </script>
 <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
 
